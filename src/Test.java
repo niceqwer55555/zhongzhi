@@ -33,4 +33,50 @@
 //    }
 //}
 //5,用穷举法求出3位数中百，十，个位数的立方和就是该数的数。
-
+//public class Test
+//{
+//    public static void main(String[] args)
+//    {
+//        int a,b,c,x=100;
+//        while (x<1000){
+//            a=x%10;
+//            b=(x%100)/10;
+//            c=(x%1000)/100;
+//            if (a*a*a+b*b*b+c*c*c==x)
+//                System.out.println(x);
+//            x+=1;
+//        }
+//    }
+//}
+//7,编程实现打印以下图案    ********
+//public class Test {
+//    public static void main(String[] args) {
+//        int i, j, k;
+//        for (i = 1; i < 6; i++) {
+//            for(j=1;j<=i-1;j++)
+//
+//            System.out.println("*");
+//        }
+//    }
+//}
+//99乘法表
+//public class Test {
+//    public static void main(String[] args) {
+//        int i,j,k;
+//        for (i = 1; i <= 9; i++) {
+//           for(j=1;j<=i;j++){
+//               System.out.print(i+"*"+j+"="+j*i+"	");
+//           }
+//           System.out.println();
+//        }
+//    }
+//}
+//10.冒泡排序
+//public class Test{
+//    public static void main(String[] args){
+//        int[] number = new int[]{1,4,322,3,4,5,2}
+//        int i,j;
+//        for(i=0;i<number.)
+//    }
+//}
+//11.打印输出斐波那契数列的前12项
