@@ -71,7 +71,7 @@
 //        }
 //    }
 //}
-//10.冒泡排序
+//10.冒泡排序  未理解
 //public class Test{
 //    public static void main(String[] args){
 //        int[] number = new int[]{1,4,322,3,4,5,2}
@@ -80,3 +80,26 @@
 //    }
 //}
 //11.打印输出斐波那契数列的前12项
+//public class Test{
+//    public static void main(String[] args){
+//        int i=0,j=1;
+//        for(int k=0;k<6;k++)
+//        {System.out.print(i+" "+j+" ");
+//        i=i+j;
+//        j=i+j;
+//    }
+//}}
+//发散：如何取n位的斐波那契数列
+//import java.util.Scanner;
+//public class Test{
+//    public static void main(String[] args){
+//        Scanner input = new Scanner(System.in);
+//        int mk = input.nextInt();
+//        int i= 0,j = 1,k;
+//        for(k=0;k<6;k++)
+//        {
+//            System.out.print(i+" "+j+" ");
+//        i=i+j;
+//        j=i+j;
+//    }
+//}}
