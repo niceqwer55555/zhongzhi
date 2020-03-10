@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ccbbd6d3-f790-48f4-93ed-5e1234b6b6ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zhongzhi/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zhongzhi/Test2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Fanli.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fanli.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test2.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,11 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Fanli.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4979">
-              <caret line="235" lean-forward="true" selection-start-line="235" selection-end-line="235" />
-              <folding>
-                <element signature="e#0#5122#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="475">
+              <caret line="15" column="103" selection-start-line="15" selection-start-column="103" selection-end-line="15" selection-end-column="103" />
             </state>
           </provider>
         </entry>
@@ -60,8 +52,8 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="525" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="524" />
     <option name="y" value="-19" />
     <option name="width" value="846" />
     <option name="height" value="763" />
@@ -94,7 +86,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583803241974" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583807031087" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
@@ -161,18 +153,18 @@
       <updated>1583717179423</updated>
       <workItem from="1583717184126" duration="16420000" />
       <workItem from="1583752878530" duration="3181000" />
-      <workItem from="1583794666835" duration="7850000" />
+      <workItem from="1583794666835" duration="9936000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27451000" />
+    <option name="totallyTimeSpent" value="29537000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="524" y="-19" width="846" height="763" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.022692889" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.03816794" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -181,7 +173,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2629032" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.40063593" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4043624" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -239,11 +231,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Fanli.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4979">
-          <caret line="235" lean-forward="true" selection-start-line="235" selection-end-line="235" />
-          <folding>
-            <element signature="e#0#5122#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="475">
+          <caret line="15" column="103" selection-start-line="15" selection-start-column="103" selection-end-line="15" selection-end-column="103" />
         </state>
       </provider>
     </entry>
