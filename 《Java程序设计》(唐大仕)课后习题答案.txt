@@ -1,0 +1,2487 @@
+
+1章  Java语言面与向对象的程序设计 
+． Java语言有哪些主要特点? 
+（要点）： 
+．简单易学 
+．面向对象 
+．平台无关性 
+．安全稳定 
+．支持多线程 
+．很好地支持网络编程 
+．Java丰富的类库使得Java可以广泛地应用 
+．简述面向过程问题求解和面向对象问题求解的异同。试列举出面向对象和面向过程的编
+ 
+
+―对象‖为主体，―对象‖是现实世界的实体或概念在计算机
+ 
+C，Pascal， Foratn。 
+C++， Java，C#。 
+．简述对象、类和实体及它们之间的相互关系。尝试从日常接触到的人或物中抽象出对象
+ 
+
+
+
+―电视机‖，那么对象就是某一个具体的电视机，如―我家那台电视机‖。 
+．对象有哪些属性?什么是状态?什么是行为?二者之间有何关系?设有对象―学生‖，试为这
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+．对象间有哪三种关系?对象―班级‖与对象―学生‖是什么关系?对象―学生‖与对象―大学生‖
+? 
+ 
+―班级‖与对象―学生‖是包含关系。 
+―学生‖与对象―大学生‖是继承关系。 
+．有人说―父母‖和―子女‖之间是继承的关系。这种说法是否正确?为什么? 
+―父母‖和―子女‖之间不是面向对象意义上的―继承‖关系。因为这里的继承关系是―is a‖
+―男人‖与―人‖之间可以说是继承关系。 
+．面向对象的软件开发包括哪些过程?OOA模型包括哪三个层次?OOD模型在OOA模型的
+? 
+(Object Oriented analysis，
+、面向对象的设计(Object oriented design，OOD)、面向对象的实现(Object oriented 
+，OOP)三个阶段。 
+
+ 
+OOA模型的基础上引入界面管理、任务管理和数据管理三部分的内
+ 
+．面向对象的程序设计方法有哪些优点? 
+
+
+―分析—设计—实现‖的开发过程也更加高效、快捷。                                
+
+2章 简单的Java程序 
+． 简述Java编译和运行的基本方法。 
+JDK中的工具javac.exe。例如： 
+ HelloWorldApp.java 
+Java程序则可以使用JDK提供的解释器是java.exe。例如： 
+ HelloWorldApp
+
+． 下载并安装JDK软件包，3． 尝试查看其中的JDK文档。 
+ Java编程的基本工具包是JDK（Java Development Kit）。JDK是Sun公司免费提供的开
+Java程序的基本软件，它可以在Windows及Unix两种平台下使用。常用的版本是
+， JDK1.3.0，JDK1.4等。可以从http://java.sun.com网站下载较新的版本，如JDK1.5（也
+JDK5.0）。 
+文档也可以从网上下载。 
+．编写一个Java Application，利用JDK软件包中的工具编译并运行这个程序，在屏幕上输
+―Welcome to Java World!‖。 
+ 
+
+
+public static void main(String[] args) 
+{ 
+ System.out.println("Welcom to java vorld"); 
+} 
+
+．编写一个Java Applet，使之能够在浏览器中显示―Welcome to Java Applet  World!‖的字符
+ 
+import java.awt.*; 
+
+
+public void paint(Graphics g){ 
+ g.drawString ("Welcome to Java Applet  World!",20,20); 
+} 
+
+．编写一个HTML文件，将上题中生成的Applet字节码嵌入其中，并用WWW浏览器观看
+HTML文件规定的Web页面。 
+ 
+．编写一个程序，能够从键盘上接收两个数字，然后计算这两个数的积。 
+import java.io.*; 
+ 
+
+public static void main(String[] args)  
+{ 
+ String s = ""; 
+ double c = 0; 
+ double d = 0; 
+ try{ 
+  BufferedReader in = new BufferedReader( 
+   new InputStreamReader( System.in ) ); 
+  System.out.print("请输入一个数: "); 
+  s = in.readLine(); 
+  c = Double.parseDouble( s ); 
+  System.out.print("请输入另一个数: "); 
+  s = in.readLine(); 
+  d = Double.parseDouble( s ); 
+ }catch(IOException e){} 
+ System.out.println("这两个数的积为: " + (c * d) ); 
+} 
+
+．编写一个程序，从两个文本框中接收两个数字，然后计算这两个数的积。 
+import java.applet.*; 
+
+
+ Ex2_7 extends Applet 
+
+TextField in1 = new TextField(10); 
+TextField in2 = new TextField(10); 
+
+Button btn = new Button("求两个数的积"); 
+Label out = new Label("用于显示结果的标签"); 
+
+public void init() 
+{ 
+ setLayout( new FlowLayout() ); 
+ add( in1 ); 
+ add( in2 ); 
+ add( btn ); 
+ add( out ); 
+ btn.addActionListener( new BtnActionAdapter() ); 
+} 
+
+class BtnActionAdapter implements ActionListener 
+{ 
+ public void actionPerformed( ActionEvent e ) 
+ { 
+  String s1 = in1.getText(); 
+  double d1 = Double.parseDouble( s1 ); 
+  String s2 = in2.getText(); 
+  double d2 = Double.parseDouble( s2 ); 
+  double result = d1 * d2; 
+  out.setText( d1 + "X" + d2 +"=" + result); 
+ } 
+} 
+
+．常用的集成开发工具有哪些？各有什么特点？ 
+Borland公司出品的Jbuilder, Sun公司出品的Java Workshop, 
+公司的Visual Age for Java，Oracle公司的Java Develop,等等。另外，Symantec公司的Visual 
+ 也是著名的Java开发工具。近来，Eclipse也是使用很广的集成开发工具。 
+
+3章 数据运算、流控制、数组
+
+．简述Java程序的构成。如何判断主类?下面的程序有几处错误?如何改正，这个程序的源
+?    public class MyJavaClass 
+   { 
+  public static void main() 
+   { 
+   System.out．printIn("Am I wrong?")； 
+   } 
+   System.out．printIn("程序结束。")； 
+   } 
+Java源程序文件构成，每个文件中可以有多个类定义。
+Java源程序文件由以下三部分组成： 
+package 语句；  （0句—1句） 
+import 语句；   （0句—多句） 
+类定义          (1个—多个类定义) 
+main()方法的类。 
+printIn中的大写字
+I应改为小写字母l；另外，main()方法应该带参数，改为： 
+  public static void main(String [] argvs) 
+
+
+
+ Ex2_7 extends Applet 
+
+TextField in1 = new TextField(10); 
+TextField in2 = new TextField(10); 
+Button btn = new Button("求两个数的积"); 
+Label out = new Label("用于显示结果的标签"); 
+public void init() 
+{ 
+ setLayout( new FlowLayout() ); 
+ add( in1 ); 
+ add( in2 ); 
+ add( btn ); 
+ add( out ); 
+ btn.addActionListener( new BtnActionAdapter() ); 
+} 
+class BtnActionAdapter implements ActionListener 
+{ 
+ public void actionPerformed( ActionEvent e ) 
+ { 
+  String s1 = in1.getText(); 
+  double d1 = Double.parseDouble( s1 ); 
+  String s2 = in2.getText(); 
+  double d2 = Double.parseDouble( s2 ); 
+  double result = d1 * d2; 
+  out.setText( d1 + "X" + d2 +"=" + result); 
+ } 
+} 
+
+．Java有哪些基本数据类型?写出int型所能表达的最大、最小数据。 
+Java中定义了4类/8种基本数据类型： 
+1）逻辑型——boolean 
+2）整数型——byte, short, int, long 
+3）浮点数型——float, double 
+4）字符型——char 
+int占4个字节，其范围为 -2147483648-2147483647。 
+．Java的字符采用何种编码方案?有何特点?写出五个常见的转义符。 
+char(字符型)是用Unicode编码表达的字符，在内存中占两个字节。由于Java的字符类型
+——Unicode编码，这样便于东方字符和西方字符处理，这样
+Java处理多语种的能力大大加强。 
+ 
+单引号字符 
+双引号字符 
+反斜杠字符 
+回车 
+换行 
+． Java对标识符命名有什么规定，下面这些标识符哪些是对的?哪些是错的?错在哪里? 
+ (2)_isHers  (3)2JavaProgram  (4)Java-Visual-Machine  (5)_$abc 
+—定的语法规定。标识符要满足如下的
+ 
+标识符可以由字母、数字和下划线(_)、美元符号($)组合而成。 
+标识符必须以字母、下划线或美元符号开头，不能以数字开头。 
+
+ 
+3）不对，因为用数字开头了，(4)也不对，因为其中用了减号。 
+．什么是常量?什么是变量?字符变量与字符串常量有何不同? 
+
+ 
+ 
+．什么是强制类型转换?在什么情况下需要用到强制类型转换? 
+ 
+ 
+
+
+Java会自动转换；而将变量从较长的数据类型转换成较短的数据类型时，则必须做强制
+ 
+．Java有哪些算术运算符、关系运算符、逻辑运算符、位运算符和赋值运算符?试列举单
+ 
+Java中，按照运算符功能来分，基本的运算符有下面几类： 
+．算术运算符(+，-，*，/，%，++，--) 
+．关系运算符(>，<，>=，<=，==，!=) 
+．布尔逻辑运算符(!，&&，||，&，|) 
+．位运算符(>>，<<，>>>，&，|，^，~) 
+．赋值运算符(=，及其扩展赋值运算符如+=) 
+．条件运算符( ?：) 
+．其他 (包括分量运算符·，下标运算符 []，实例运算符instanceof，内存分配运算
+new，强制类型转换运算符 (类型)，方法调用运算符 () 等) 
+-，！，而三目运算符只有一个，即条件运算符（？: ）。 
+．编写一个字符界面的Java Application程序，接受用户输入的一个浮点数，把它的整数部
+ 
+/* 原来的程序 
+public class MyJavaClass 
+   { 
+  public static void main() 
+   { 
+   System.out．printIn("Am I wrong?")； 
+   } 
+   System.out．printIn("程序结束。")； 
+   } 
+
+
+
+  public static void main(String [] args) 
+   { 
+ System.out.println("Am I wrong?"); 
+    System.out.println("程序结束。"); 
+} 
+
+．编写一个字符界面的Java Application程序，接受用户输入的10个整数，比较并输出其中
+ 
+import java.io.*; 
+ 
+
+public static void main(String[] args)  
+{ 
+ int N = 10; 
+ int [] a = new int[N];  //声明数组并分配空间 
+
+ try{ 
+  BufferedReader in = new BufferedReader( 
+   new InputStreamReader( System.in ) ); 
+  for( int i=0; i<N; i++ ){ 
+   System.out.print("请输入第" + (i+1) +"个整数: "); 
+   String s = in.readLine(); 
+   a[i]  = Integer.parseInt( s ); 
+  } 
+  int max = a[0]; 
+  int min = a[0]; 
+  for( int i=1; i<N; i++ ){ 
+   if( max < a[i] ) max = a[i]; 
+   if( min > a[i] ) min = a[i]; 
+  } 
+  System.out.println( "最大数为: " + max ); 
+  System.out.println( "最小数为: " + min ); 
+ }catch(IOException e){} 
+} 
+
+．编写一个字符界面的Java Application程序，接受用户输入的字符，以―#‖标志输入的结
+ 
+import java.io.*; 
+ 
+
+public static void main(String[] args)  
+{ 
+ char min = '\uffff'; 
+  
+ System.out.print("请输入一串字符，以#结束："); 
+ while( true ) 
+ { 
+  char c = ' '; 
+  try{ 
+   c = (char) System.in.read(); 
+
+  }catch(IOException e){} 
+
+  if( c == '#' ) break; 
+  if( min > c ) min = c; 
+ } 
+ System.out.println("\n其中最小的字符是: " + min ); 
+} 
+
+．结构化程序设计有哪三种基本流程?分别对应Java中的哪些语句? 
+任何程序都可以且只能由三种基本流程结构构成，即顺序结构、分支结构和循环结构。
+if及switch语句书写，循环结构用for、while及do语句来书写。 
+．编写一个Java程序，接受用户输入的一个l-12之间的整数(如果输入的数据不满足这个
+)，利用switch语句输出对应月份的天数。 
+import java.io.*; 
+ 
+
+public static void main(String[] args)  
+{ 
+ try{ 
+  BufferedReader in = new BufferedReader( 
+   new InputStreamReader( System.in ) ); 
+
+  int a = 0; 
+  do{ 
+
+   System.out.print("请输一个1~12的整数: "); 
+   String s = in.readLine(); 
+   a = Integer.parseInt( s ); 
+  }while( a <1 || a > 12 ); 
+
+  switch( a ){ 
+   case 1: System.out.println("一月"); break; 
+   case 2: System.out.println("二月"); break; 
+   case 3: System.out.println("三月"); break; 
+   case 4: System.out.println("四月"); break; 
+   case 5: System.out.println("五月"); break; 
+   case 6: System.out.println("六月"); break; 
+   case 7: System.out.println("七月"); break; 
+   case 8: System.out.println("八月"); break; 
+   case 9: System.out.println("九月"); break; 
+   case 10: System.out.println("十月"); break; 
+   case 11: System.out.println("十一月"); break; 
+   case 12: System.out.println("十二月"); break; 
+   default: break; 
+  } 
+ }catch(IOException e){} 
+} 
+
+．在一个循环中使用break，continue和return语句有什么不同的效果? 
+break是结束循环；continue是直接进行下一次循环；return则是结束整个函数的调用。 
+．编写图形界面下的Java Applet程序，接受用户输入的两个数据为上、下限，然后10个
+ 
+
+
+
+ Ex3_14 extends Applet 
+
+TextField in1 = new TextField(10); 
+TextField in2 = new TextField(10); 
+Button btn = new Button("求两个数之间的素数"); 
+TextArea out = new TextArea(10,100); //用于输出 
+public void init() 
+{ 
+ setLayout( new FlowLayout() ); 
+ add( in1 ); 
+ add( in2 ); 
+ add( btn ); 
+ add( out ); 
+ btn.addActionListener( new BtnActionAdapter() ); 
+} 
+
+class BtnActionAdapter implements ActionListener 
+{ 
+ public void actionPerformed( ActionEvent e ) 
+ { 
+  String s1 = in1.getText(); 
+  int a1 = Integer.parseInt( s1 ); 
+  String s2 = in2.getText(); 
+  double a2 = Integer.parseInt( s2 ); 
+   
+  String result = ""; //结果 
+  int cnt = 0; //计算素数的个数 
+  for( int i = a1; i<=a2; i++ ){ 
+   if( isPrime( i ) ){ 
+    result +=  (""+i); //如果是素数，则加入 
+    cnt ++; 
+    if( cnt % 10 == 0 ) result += "\r\n"; 
+    else result += "\t"; 
+   } 
+  } 
+  out.setText( result); 
+ } 
+ public boolean isPrime( int a )//判断一个数是否是素数 
+ { 
+  if( a <= 1 ) return false;  
+  for( int i=2; i<a; i++ ) 
+   if( a % i == 0 ) return false; 
+  return true; 
+ } 
+} 
+
+．编写程序输出用户指定数据的所有素数因子。 
+import java.io.*; 
+ 
+
+public static void main(String[] args)  
+{ 
+ try{ 
+  BufferedReader in = new BufferedReader( 
+   new InputStreamReader( System.in ) ); 
+
+  System.out.print("请输入一个正整数: "); 
+  String s = in.readLine(); 
+  int a  = Integer.parseInt( s ); 
+   
+  System.out.println( a + "的所有素因子包括: "); 
+  for( int i=2; i<=a; i++ ){ 
+   if( a%i==0 && isPrime(i) ){ 
+    System.out.println( i ); 
+   } 
+  } 
+
+ }catch(IOException e){} 
+} 
+ 
+public static boolean isPrime( int a )//判断一个数是否是素数 
+{ 
+ if( a <= 1 ) return false;  
+ for( int i=2; i<a; i++ ) 
+  if( a % i == 0 ) return false; 
+ return true; 
+} 
+
+．什么是数组?数组有哪些特点?Java中创建数组需要使用哪些步骤?如何访问数组的一个
+?数组元素的下标与数组的长度有什么关系? 
+
+ 
+ 
+ 
+ arrayName[ ]； 
+ type [ ] arrayName； 
+new，其格式如下： 
+； 
+new为它分配了内存空间后，就可以引用数组中的每一个
+ 
+
+0开始，一直到数组的长度减1。 
+
+．数组元素怎样进行缺省的初始化? 
+ 
+
+(，)分隔数组的各个元素，系统自动为数组分配一定的空间。 
+
+．编程求一个整数数组的最大值、最小值、平均值和所有数组元素的和。 
+import java.io.*; 
+ 
+
+public static void main(String[] args)  
+{ 
+ int N = 100; 
+ int [] a = new int[N];  
+ for( int i=0; i<N; i++ ) { 
+  a[i]=(int) (Math.random()*100); //为了简单，这里赋随机值 
+ } 
+
+ int sum = 0; 
+ int max = a[0]; 
+ int min = a[0]; 
+ for( int i=0; i<N; i++ ){ 
+  sum += a[i]; 
+  if( max < a[i] ) max = a[i]; 
+  if( min > a[i] ) min = a[i]; 
+ } 
+
+ System.out.println( "最大值：" + max ); 
+ System.out.println( "最小值：" + min ); 
+ System.out.println( "总和：" + sum ); 
+ System.out.println( "平均值：" + ((double)sum/N) ); 
+} 
+
+．求解―约瑟夫问题‖：12个人排成一圈，从1号报数，凡是数到5的人就出队列（出局），
+ 
+import java.io.*; 
+ 
+
+public static void main(String[] args)  
+{ 
+ int N = 12; 
+ boolean [] a = new boolean[N]; //队列状态 
+ for( int i=0; i<N; i++ ) a[i]=true; 
+
+ int i =0; //当前报数的人的下标 
+ int s = 0; //当前报的数字 
+ int cnt = 0; //已有多少人出局 
+ while(true){ 
+  if( a[i] ) s++;  //如果在队列中，则报数 
+  if( s == 5 ){//如果数到5 
+   System.out.println( (i+1) ); //显示该人的序号 
+   a[i] = false; //该人出局 
+   s = 0; //报的数归0 
+   cnt ++;  
+   if( cnt == N )break; //全部的人都出局，结束 
+  } 
+  i++; //到下一个人 
+  if( i==N) i=0; //因为队伍是一个圆圈 
+ } 
+} 
+
+．用―埃氏筛法‖求2-100以内的素数。2-100以内的数，先去掉2的倍数，再去掉3的倍数，
+4的倍数，以此类推……最后剩下的就是素数。 
+import java.io.*; 
+ 
+
+public static void main(String[] args)  
+{ 
+ int N = 100; 
+ boolean [] a = new boolean[N+1]; 
+ for( int i=0; i<=N; i++ ) a[i]=true; 
+
+ for( int i=2; i<=N; i++ ){ 
+  for( int j=2*i; j<=N; j += i ){ 
+   a[j] = false; 
+  } 
+ } 
+
+ for( int i=2; i<=N; i++ ){ 
+  if( a[i] ) System.out.println( i ); 
+ } 
+} 
+                                           
+
+4章 类、包和接口
+
+．使用抽象和封装有哪些好处? 
+(Encapsulation)是这样一种编程机制，它把代码和
+
+ 
+．编写一个Java程序片断定义一个表示学生的类student，包括域―学号‖、‖班号‖、―姓名‖、
+性别‖、―年龄‖；方法―获得学号‖、―获得班号‖、―获得性别‖、―获得年龄‖、―修改年龄‖。class 
+
+
+public static void main(String[] args)  
+{ 
+} 
+
+
+//"学号"、"班号"、"姓名"、"性别"、"年龄" 
+String id; 
+String classId; 
+String name; 
+boolean sex; 
+int age; 
+
+public String getId() { return id; } 
+public String getClassId() { return classId; } 
+public String getName() { return name; } 
+public boolean getSex() { return sex; } 
+ 
+public int getAge() { return age; } 
+public void setAge(int age) { this.age = age; } 
+
+
+．为student类定义构造方法初始化所有的域，增加一个方法public String toString()把Sttldent
+Application程序检验新增的功能。 
+class Ex4_3 
+
+public static void main(String[] args)  
+{ 
+ Student s = new Student( "09918076", "软件专业班", 
+  "李明", true, 18 ); 
+
+ System.out.println( s ); 
+} 
+
+
+
+
+//"学号"、"班号"、"姓名"、"性别"、"年龄" 
+String id; 
+String classId; 
+String name; 
+boolean sex; 
+int age; 
+
+public String getId() { return id; } 
+public String getClassId() { return classId; } 
+public String getName() { return name; } 
+public boolean getSex() { return sex; } 
+ 
+public int getAge() { return age; } 
+public void setAge(int age) { this.age = age; } 
+
+public Student( String id, String classId, String name, boolean sex, int age ) 
+{ 
+ this.id = id; 
+ this.classId = classId; 
+ this.name = name; 
+
+public String toString() 
+ this.age = age; 
+ this.sex = sex; 
+} 
+{ 
+return name + id + classId +   
+  + age + "岁," +  
+  (sex ? "男" : "女" ) ; 
+} 
+
+．什么是最终类，如何定义最终类?试列举最终类的例子。 
+final修饰符所修饰和限定的类，最终类不能被继承，即不可能有子类。
+Java中的String类就是最终类。 
+．如何定义静态域?静态域有什么特点?如何访问和修改静态域的数据? 
+static修饰，则定义了静态域。静态域最本质的特点是：它们是类的域，不属
+
+ 
+Java中，静态域（类变量）可以通过类名直接访问，也可以通过实例对象来访问，两种
+ 
+．什么是静态初始化器?它有什么特点?  与构造方法有什么不同? 
+static引导的一对大括号{}括起的语句组。它的作用与类的构造方
+
+ 
+构造方法是对每个新创建的对象初始化，而(2) 静态初始化器是对类自身进行初始化。 
+构造方法是在用new运算符产生新对象时由系统自动执行；而(4) 静态初始化器一般不
+能由程序来调用，(6) 它是在所属的类加载入内存时由系统调用执行。 
+不同于构造方法，静态初始化器不是方法，没有方法名、返回值和参数列表。 
+(4)同static方法一样，它不能访问实例域和实例方法。 
+
+．如何定义方法?在面向对象程序设计中方法有什么作用? 
+  
+Java的方法与其他语言中的函数或过程类似，是一段用来完成某种操作的程序片断。方
+ 
+1  修饰符2 …… 返回值类型   方法名(形式参数列表)  throws异常列表{ 
+ 
+
+
+
+．什么是抽象方法?它有何特点?如何定义抽象方法?如何使用抽象方法? 
+abstract所修饰的方法叫抽象方法，抽象方法的作用在为所有子类定义一个统一的接
+）而不是用{}，格式如下： 
+
+
+
+．如何定义静态方法?静态方法有何特点?静态方法处理的域有什么要求? 
+用static修饰符修饰的方法是仅属于类的静态方法，又称为类方法。与此相对，不用static
+ 
+this 或super。 
+
+．什么是访问控制符?有哪些访问控制符?哪些可以用来修饰类?哪些用来修饰域和方法?
+ 
+访问控制符是指public/private/protected等表示访问控制(Access Control)的修饰符，其作
+ 
+private, protected, public和―默认访问控制符‖。 
+private的成员（域或方法）只能被这个类本身访问，即私有访问控制。 
+
+ 
+protected的成员可以被这个类本身，它的子类(包括同一个包中以及不同包中的
+)以及同一个包中所有其他的类访问。 
+public的成员可以被所有的类访问。 
+中还有一种访问控制符为private proteced，它限定能被本类及其子类可以访问，而包中
+ 
+public，或者缺省。（但内部类可以有private、protected等访问控制
+） 
+public修饰，则该类可以被其他类所访问；若类缺省访问控制符，则该类只能被同
+ 
+
+．修饰符是否可以混合使用?混合使用时需要注意什么问题? 
+public static。但也要注意一些规则，如final及abstract不能修
+ 
+
+．什么是继承?什么是父类?什么是子类?继承的特性给面向对象编程带来什么好处?什么
+?什么是多重继承? 
+(Inheritance)是一个对象获得另一个对象的属性的过程。它的重要性源于它支持按
+(即从上至
+)。 
+ 
+所以，
+ 
+Java
+ 
+
+．如何定义继承关系? 为―学生‖类派生出―小学生‖、―中学生‖、―大学生‖、―研究生‖四个
+―大学生‖类再派生出―一年级学生‖、二年级学生‖、 ―三年级学生‖、―四年级学生‖四个
+―研究生‖类再派生出―硕士生’’和―博土生’’两个子类。 
+Java中，通过extends关键字来定义继承关系。 
+class Ex4_13 
+
+public static void main(String[] args)  
+{ 
+} 
+
+
+
+
+
+
+
+
+
+
+ extends Graduate{} 
+
+
+
+．―子类的域和方法的数目一定大于等于父类的域和方法的数目‖，这种说法是否    正
+?为什么? 
+
+ 
+．什么是域的隐藏? 
+ 
+．什么是方法的覆盖?方法的覆盖与域的隐藏有何不同?与方法的重载有何不同? 
+(Overriding)。子类在重新定
+应保持与父类完全相同的方法头声明，即应与父类有完全相同的方法名、
+ 
+ 
+．解释this和super的意义和作用。 
+this表示这个对象本身。详细地说，在普通方法中，this表示调用这个方法的对象；在
+this表示所新创建的对象。 
+指父类。在子类继承父类时，为了明确地指明父类的域和方法，就要用关键字super。 
+．父类对象与子类对象相互转化的条件是什么?如何实现它们的相互转化? 
+
+ 
+子类对象可以被视为是其父类的一个对象。如一个Student对象也是一个Person对象。 
+父类对象不能被当作是其某一个子类的对象。 
+如果一个方法的形式参数定义的是父类对象，那么调用这个方法时，可以使用子类对象
+ 
+如果父类对象引用指向的实际是一个子类对象，那么这个父类对象的引用可以用强制类
+ 
+．构造方法是否可以被继承?是否可以被重载?试举例。 
+ 
+ 
+
+ ){} 
+
+．什么是包?它的作用是什么? 
+ 
+
+．如何创建包?在什么情况下需要在程序里创建包? 
+package语句作为Java源文件的第一条语句，指明该文件中定义的类所在的包。它的格
+ 
+ 
+Java编译器为每个类生成一个字节码文件，且文件名与public的类名相同，因此同名的
+ 
+
+．如何引用包中的某个类?如何引用整个包?如果编写Java Applet程序时想把整个
+．applet包都加载，则应该怎么做? 
+Java中已提供的类，我们需要用import语句来引入所需要的类。import语句
+ 
+ 
+package1[.package2…]表明包的层次，与package语句相同，它对应于文件目录，classname
+(*)来代替。例如： 
+
+
+Java Applet程序时想把整个java．applet包都加载，可以使用： 
+
+
+．CLASSPATH是有关什么的环境变量?它如何影响程序的运行?如何设置和修改这个环境
+? 
+
+CLASSPATH来确定的。具体操作有两种方法： 
+一是在java及javac命令行中，用-classpath选项来指明： 
+如： 
+ java  –classpath  d:\tang\ch04;c:\java\classes;.  pk.TestPkg 
+二是设定classpath环境变量，用命令行设定环境变量，如： 
+ Set CLASSPATH= d:\tang\ch04;c:\java\classes;. 
+Windows中还可以按第2章中的办法设定环境变量。 
+
+
+．什么是接口?为什么要定义接口?接口与类有何异同?如何定义接口?使用什么关键字? 
+Java中的接口(interface)在语法上有些相似于类(class)，它定义了若于个抽象方法和常量，
+
+ 
+ 
+interface。 
+ 
+[public]interface接口名[extends父接口名列表] 
+ //接口体 
+常量域声明 
+域类型域名＝常量值； 
+抽象方法声明 
+返回值方法名(参数列表)[throw异常列表]； 
+
+
+．一个类如何实现接口?实现某接口的类是否一定要重载该接口中的所有抽象方法? 
+implements关键字声明该类将要实观哪些
+ 
+abstract的抽象类，则在类的定义部分必须实观指定接口的所有抽
+
+ 
+
+5章  深入理解Java语言 
+．什么是多态?面向对象程序设计为什么要引人多态的特性?使用多态有什么优点? 
+多态性(Polymorphism来自希腊语，意思是多种形态)是指允许一个接口访问动作的通用
+―一个接口，多种方法‖。这意味着可以为一组相
+
+(方法)适应不同环境的工作则留给编译器去做。作为编程者，无需手工去做这些事
+ 
+
+
+ 
+
+．虚方法调用有什么重要作用？具有什么修饰符的方法不能够使用虚方法调用？ 
+使用虚方法调用的作用在于：在使用上溯造型的情况下，子类对象可以当做父类对象，
+Java运行时系统根据调用该方法的实例的类型来决定选择哪个方法调
+
+(未重载)，则运行时系统调用父类的方法。 
+static、private或final所修饰的方法不能够使用虚方法调用。 
+．用默认构建器（空自变量列表）创建两个类：A和B，令它们自己声明自己。从A继承一
+C的新类，并在C内创建一个成员B。不要为C创建一个构建器。创建类C的一个对象，并
+ 
+ 
+A和B的构造方法都被调用了。public class Ex5_3 
+
+public static void main( String[] args ) 
+{ 
+ C c = new C(); 
+} 
+ 
+
+
+public A(){ System.out.println("A"); } 
+
+
+
+public B(){ System.out.println("B"); } 
+
+
+
+B b = new B(); 
+
+．创建Rodent（啮齿动物）:Mouse（老鼠）,Gerbil（鼹鼠）,Hamster（大颊鼠）等的一个
+Rodent的方法，并在派生类中覆盖它们，从而根
+Rodent采取不同的行动。创建一个Rodent数组，在其中填充不同类型的Rodent，
+ 
+ 
+ 
+
+
+public static void main( String[] args ) 
+{ 
+ Rodent [] animals = new Rodent[4]; 
+ animals[0] = new Rodent(); 
+ animals[1] = new Mouse(); 
+ animals[2] = new Gerbil(); 
+ animals[3] = new Hamster(); 
+
+ for( int i=0; i<animals.length; i++ ){ 
+  animals[i].eat(); 
+ } 
+} 
+ 
+
+
+public void eat(){ System.out.println("Rodent"); } 
+
+
+
+public void eat(){ System.out.println("Mouse"); } 
+
+
+
+public void eat(){ System.out.println("Gerbil"); } 
+
+
+
+public void eat(){ System.out.println("Hamster"); } 
+
+．Java中怎样清除对象？能否控制Java中垃圾回收的时间？ 
+Java中，无用的对象由系统自动进行清除和内存回收的过程，编程者可以不关心如何
+ 
+Java虚拟机的垃圾回收线程来完成的。编程者不能完全控制垃圾回收的时
+ 
+．内部类与外部类的使用有何不同？ 
+
+new创建内部类时，也要在new前面冠以对象
+ 
+
+．怎样使用匿名类的对象？ 
+ 
+这种类不(2) 取名(3) 字，而(4) 直接用其父类的名(5) 字或者它所实现的接口的
+(6) 字。 
+类的定义与创建该类的一个实例同(8) 时进行，(9) 即类的定义前面有一个new。也不
+使用关键词class，同(11) 时也带上（）表示创建对象。也就是说，(12) 匿名
+
+ 
+new 类名或接口名 （） { ……… } 
+类名(15) 前面不(16) 能有修饰符。 
+类中不(18) 能定义构造方法，(19) 因为它没有名(20) 字。在构造对象时，(21) 直
+(22) 则接口名(23) 后的圆括号中不(24) 能
+ 
+．方法中定义的内部类是否可以存取方法中的局部变量？ 
+final的局部变量或final的参变
+                          
+6章 异常处理
+
+．异常可以分成几类？ 
+Java的异常类都是java.lang.Trowable的子类。它派生了两个子类：Exception和Error。其
+Error类由系统保留，而Exception类则供应用程序使用。 
+
+．用main()创建一个类，令其抛出try块内的Exception类的一个对象。为Exception的构建器
+catch从句内捕获异常，并打印出字串参数。添加一个finally从句，并打
+public class Ex6_2 
+
+public static void main( String[] args ) 
+{ 
+ try{ 
+  int i = Integer.parseInt( "23.4" ); 
+ } 
+ catch( Exception e ){ 
+  System.out.println( e ); 
+ } 
+ finally { 
+  System.out.println("finished"); 
+ } 
+} 
+
+
+ 
+
+．用extends关键字创建自己的异常类。为这个类写一个构建器，令其采用String参数，并
+String句柄把它保存到对象内。写一个方法，令其打印出保存下来的String。创建一个try-catch
+ 
+public class Ex6_3 
+
+public static void main( String[] args ) 
+{ 
+ try{ 
+  throw new Ex63Exception("测试"); 
+ } 
+ catch( Ex63Exception e ){ 
+  e.show(); 
+ } 
+ finally { 
+  System.out.println("finished"); 
+ } 
+} 
+
+
+
+
+String msg; 
+public Ex63Exception( String msg ) { 
+ super( msg ); 
+ this.msg = msg; 
+} 
+public void show(){ 
+ System.out.println( msg ); 
+} 
+
+
+．写一个类，并在一个方法抛出一个异常。试着在没有异常规范的前提下编译它，观察编
+接着添加适当的异常规范。在一个try-catch从句中尝试自己的类以及它的异常。 
+public class Ex6_4 
+
+public static void main( String[] args ) 
+{ 
+ char c; 
+ try{ 
+  c = (char)System.in.read(); 
+ } 
+ // /* 如果不用catch，编译不会通过 
+ catch( java.io.IOException e ){ 
+  System.out.println( e ); 
+ } 
+ // */ 
+} 
+
+
+7章  工具类及常用算法
+
+．在所有的Java系统类中，Object类有什么特殊之处?它在什么情况下使用?   
+Object类是Java程序中所有类的直接或间接父类，也是类库中所有类的父类。正因为
+类是所有Java类的父类，而且可以和任意类型的对象匹配，所以在有些场合可以使用它作
+Object类可以使得该方法的实际参数为任意类型的对象，从而扩大了
+ 
+
+．数据类型包装类与基本数据类型有什么关系? 
+Java的基本数据类型用于定义简单的变量和属性将十分方便，但为了与面向对象的环
+Java中提供了基本数据类型的包装类（wrapper）,它们是这些基本类型的面向对象的代
+与8种基本数据类型相对应，基本数据类型的包装类也有8种，分别是：Character，Byte， Short， 
+， Long， Float， Double， Boolean。 
+
+．Math类用来实现什么功能?设x，y是整型变量，d是双精度型变量，试书写表达式完成下
+ 
+   (1)求x的y次方； 
+   (2)求x和y的最小值； 
+   (3)求d取整后的结果； 
+   (4)求d的四舍五入后的结果； 
+   (5)求atan(d)的数值。 
+ 
+
+
+
+
+
+
+．Math．random()方法用来实现什么功能?下面的语句起到什么作用? 
+ (int)(Math．random()*6)+1 
+Math.random()用于产生随机数（0到1之间，包含0，但不包含1）。 
+1到6之间的一个随机整数（包含1及6）。 
+
+．编程生成100个l～6之间的随机数，统计1—6之间的每个数出现的概率；修改程  序，
+1 000个随机数并统计概率；比较不同的结果并给出结论。 
+class Ex7_5  
+
+public static void main(String[] args)  
+{ 
+ statistics( 100 ); 
+ statistics(1000 ); 
+ //结论：次数越大，6个数出现的机率越接近 
+} 
+
+public static void statistics( int times ) 
+{ 
+ int [] cnt = new int[6]; 
+ for( int i=0; i<times; i++ ) 
+ { 
+  int r = rnd( 6 );  //得到一个随机数 
+  cnt[ r-1 ] ++;     //计数 
+ } 
+ System.out.println("1-6出现的次数分别为"); 
+ for( int i=0; i<6; i++ ) 
+ { 
+  System.out.print( cnt[i] + " " ); 
+ } 
+ System.out.println(); 
+} 
+
+public static int rnd( int max ) 
+{ 
+ return (int)(Math.random() * max ) + 1; 
+} 
+
+
+ 
+
+．什么是字符串?Java中的字符串分为哪两类? 
+Java中，字符串，无论是常量还是变量，都是用类的对象
+ 
+
+String类，后者是StringBuffer类。 
+
+．编写Applet程序，接受用户输入的一个字符串和一个字符，把字符串中所有指定的字符
+ 
+import java.applet.*; 
+
+
+
+ Ex7_7 extends Applet 
+
+TextField in1 = new TextField(10); 
+TextField in2 = new TextField(10); 
+
+Button btn = new Button("删除字符串的指定字符"); 
+Label out = new Label("用于显示结果的标签"); 
+
+public void main int() 
+{ 
+ setLayout( new FlowLayout() ); 
+ add( in1 ); 
+ add( in2 ); 
+ add( btn ); 
+ add( out ); 
+ btn.addActionListener( new BtnActionAdapter() ); 
+} 
+
+class BtnActionAdapter implements ActionListener 
+{ 
+ public void actionPerformed( ActionEvent e ) 
+ { 
+  String s1 = in1.getText(); 
+  String s2 = in2.getText(); 
+  char c2 = s2.charAt(0); 
+
+  StringBuffer sb = new StringBuffer(); 
+  for( int i=0; i<s1.length(); i++ ){ 
+   char c1 = s1.charAt(i); 
+   if( c1 != c2 ) { 
+    sb.append( c1 ); 
+   } 
+  } 
+
+  out.setText( "结果为" + sb ); 
+ } 
+} 
+
+
+
+
+．编程判断一个字符串是否是回文。 
+import java.io.*; 
+ 
+
+public static void main(String[] args)  
+{ 
+ try{ 
+  BufferedReader in = new BufferedReader( 
+   new InputStreamReader( System.in ) ); 
+  System.out.print("请输入一串字符: "); 
+  String s = in.readLine(); 
+   
+  boolean flg = true; 
+  int len = s.length(); 
+  for( int i=0; i<len/2; i++ ){ 
+   if( s.charAt(i) != s.charAt(len-1-i) ){ 
+    flg = false; 
+    break; 
+   } 
+  } 
+  System.out.println( flg ? "是回文" : "不是回文" ); 
+ }catch(IOException e){} 
+} 
+
+
+
+．String类的concat()方法与StringBuffer类的append()方法都可以连接两个字符串，它们之
+? 
+String的concat()方法不改变原字符串本身，而是产生一个新的字符串。 
+的append()方法则改变其中的字符串内容，而不产生一个新的对象。 
+
+．什么是递归方法?递归方法有哪两个基本要素?编写一个递归程序求一个一维数组所有
+ 
+
+
+class Ex7_10 
+
+
+public static double multi( double [] a ) 
+{ 
+ return mul( a,  0 ); //从第0个元素开始乘 
+} 
+//下面的mul是一个辅助函数，它表示从第p个元素开始乘 
+public static double mul( double [] a, int p ) 
+{ 
+ if( p >= a.length ) return 1; 
+ else return a[p] * mul(a, p+1 ); //递归调用 
+} 
+
+public static void main( String [] args ) 
+{ 
+ double [] a = { 1, 6, 7, 9 }; 
+ System.out.println( multi(a) ); 
+} 
+
+  
+ 
+
+．你了解几种排序算法?它们各自有什么优缺点?分别适合在什么情况下使用? 
+
+ 
+
+．向量与数组有何不同?它们分别适合于什么场合? 
+
+ 
+
+．Java中有几种常用的集合类及其区别如何？怎样获取集合中的各个元素。 
+
+elemnetAt()等方法来获取其中的元素。 
+
+．队列和堆栈各有什么特点？ 
+―先进先出‖(FIFO)原则，堆栈遵循―后进先
+‖(LIFO)原则。 
+
+．求解―鸡兔同笼问题‖：鸡和兔在一个笼里，共有腿100条，头40个，问鸡兔各有几只。 
+//Ex 7-15: 鸡兔同笼 
+ Ex7_15 
+
+public static void main(String[] args)  
+{ 
+ int chicken, rabbit; 
+ for( chicken=1; chicken<=40; chicken++ ) 
+ { 
+  rabbit = 40-chicken; //共40头 
+  if( rabbit *4 + chicken *2 == 100 )//共100支脚 
+  { 
+   System.out.println("鸡有" + chicken + "，兔有" + rabbit); 
+  } 
+ } 
+} 
+
+
+
+．求解―百鸡问题‖。已知公鸡每只3元，母鸡每只5元，每3只小鸡1元。用100元钱买100
+ 
+class  Ex7_16 
+
+public static void main(String[] args)  
+{ 
+ int a, b, c; //三种鸡的只数 
+ for( a=1; a<=100; a++ ){ 
+  for( b=1; b<100-a; b++ ){ 
+   c = 100 - a - b; 
+   if( c>0 && c%3==0 && 3*a+5*b+c/3==100 ){ 
+    System.out.println("找到解:"  
+     + a +","+ b +","+ c ); 
+   } 
+  } 
+ } 
+} 
+
+
+
+．求四位的水仙花数。即满足这样条样的四位数：各位数字的4次方和等于该数自身。 
+class  Ex7_17 
+
+public static void main(String[] args)  
+{ 
+ int a, b, c, d; //各位数 
+ for( a=1; a<=9; a++ ){ 
+  for( b=0; b<=9; b++ ){ 
+   for( c=0; c<=9; c++ ){ 
+    for( d=0; d<=9; d++ ){ 
+     int s = 1000*a+100*b+10*c+d; 
+     int q = a*a*a*a+b*b*b*b+c*c*c*c+d*d*d*d; 
+     if( s == q ) System.out.println( s ); 
+    } 
+   } 
+  } 
+ } 
+} 
+
+
+
+．求1000以内的―相亲数‖。所谓相亲数是指这样的一对数：甲数的约数之和等于乙数，
+ 
+class  Ex7_18 
+
+public static void main(String[] args)  
+{ 
+ for( int a=1; a<=10000; a++ ){ 
+  int b= sumfactor(a); 
+  if( b>a && b<=10000 && sumfactor(b)==a ){ 
+   System.out.println( a +"," + b); 
+  } 
+ } 
+} 
+public static int sumfactor( int a ) 
+{ 
+ int s = 0; 
+ for( int i=1; i<a; i++ ) 
+  if( a % i == 0 ) s += i; 
+ return s; 
+} 
+
+
+
+．―哥德巴赫猜想‖指出，每个大于6的偶数，都可以表示为两个素数的和。试用程序将6-100
+ 
+//Ex 7-19: 哥德巴赫猜想 
+
+
+public static void main(String[] args)  
+{ 
+ for( int a = 6; a<=100; a +=2 ) //对每个偶数进行检验 
+ { 
+  for(int i=2; i<a; i++ ) // 试验每种可能的加法情况 
+  { 
+   if( isPrime( i ) && isPrime( a-i ) )//两个数都是质数 
+   { 
+    System.out.println(a + "=" + i + "+" + (a-i)); 
+    break; 
+   } 
+  } 
+ } 
+} 
+public static boolean isPrime( int m ) // 判断是否是质数 
+{ 
+ for(int i=2; i<m-1; i++ ) 
+ { 
+  if( m % i == 0 ) return false; //如果能除尽，则不是质数 
+ } 
+ return true;//都不能除尽，表明它是质数 
+} 
+
+
+
+
+．菲波那契(Fibonacci)数列的第一项是0，第二项是l，以后各项都是前两项的和，试用递
+N项的值。 
+public class Ex7_20 
+
+public static void main(String args[]) 
+{ 
+ System.out.println("非递归方法求得第5项为："  
+  + fib1( 5) ); 
+ System.out.println("递归方法求得第5项为："  
+  + fib( 5) ); 
+} 
+static int fib1( int n ){ 
+ if( n==0 || n==1) return 1; 
+ int a=1, b=1, c=2; //a,b表示前两项，c表示当前项 
+ for( int i=2; i<=n; i++ ){ 
+  c = a+b;  
+  a = b; 
+  b = c; 
+ } 
+ return c; 
+} 
+static int fib( int n ){ 
+ if( n==0 || n==1) return 1; 
+ else return fib(n-1) + fib(n-2); 
+} 
+
+
+
+
+．用迭代法编写程序用于求解立方根。 
+x3-a=0的牛顿迭代公式为x-(x3-a)/(3 x2)public class Ex7_21 
+
+public static void main(String args[]){ 
+ System.out.println( trt( 2.0 ) ); 
+ System.out.println( Math.pow(2.0, 1.0/3.0) ); 
+} 
+
+static double trt( double a ){ 
+ double x=1.0; 
+ do{ 
+  x = x - (x*x*x - a)/(3*x*x); 
+ }while( Math.abs(x*x*x-a)/a > 1e-6 ); 
+ return x; 
+} 
+ 
+ 
+
+．用迭代法编写程序用于求解以下方程： 
+  x2+sinx-1.0=0 在-1附近的一个根 
+x-( x2+sinx-1.0)/(2 x+cosx)。 
+
+
+public static void main(String args[]){ 
+ double x = -1.0; 
+ int n =0; 
+ while(true){ 
+  double xnew = x-( x*x+Math.sin(x)-1.0)/(2*x+Math.cos(x)); 
+  if( Math.abs(xnew - x) < 1e-6 ) break; 
+  System.out.println( x ); 
+  x = xnew; 
+  //if( n++ > 10 )break; 
+
+ } 
+ System.out.println( x ); 
+} 
+ 
+
+．作出对应于不同c值的Julia集的图： 
+
+
+
+
+import java.awt.*; 
+
+
+public static void main( String []args ){ 
+ Frame frm = new Frame("Julia"); 
+ frm.setSize( 300, 300 ); 
+ frm.setVisible(true); 
+ Ex7_23 p = new Ex7_23( frm ); 
+ p.drawJulia(); 
+} 
+ 
+private Frame frm; 
+private Graphics graphics; 
+private int width; 
+private int height; 
+
+public Ex7_23(Frame frm) 
+{ 
+ graphics = frm.getGraphics(); 
+ width = frm.getSize().width; 
+ height = frm.getSize().height; 
+} 
+public void drawJulia(){     
+ //比例后的坐标范围 (-1.5, 1.5)-(1.5, -1.5) 
+  
+ final double a = 0.5;     //c=a+bi为Julia集的参数 
+ final double b = 0.55; 
+  
+ for( double x0 = -1.5; x0 < 1.5; x0+=0.01 ) 
+ for( double y0 = -1.5; y0 < 1.5; y0+=0.01 ){ 
+  double x=x0, y=y0; 
+  int n; 
+  for( n = 1; n<100; n++ ){ 
+   double x2 = x * x - y * y + a; 
+   double y2 = 2 * x * y + b; 
+   x = x2; 
+   y = y2; 
+   if( x * x + y * y > 4 ) break; 
+  } 
+  pSet(x0, y0, n ); //按n值来将(x,y)点进行着色 
+ } 
+} 
+public void pSet(double x, double y, int n){ 
+ graphics.setColor( new Color( n* 0xff8855 ) ); 
+ graphics.drawLine(  
+  (int)(x*width/3 + width/2), 
+  (int)(y*height/3 + height/2 ), 
+  (int)(x*width/3 + width/2), 
+  (int)(y*height/3 + height/2 ) 
+  ); 
+} 
+
+
+
+．求―配尔不定方程‖的最小正整数解： 
+     x2 – Dy2 =1 
+D为某个给定的常数。令D=92，求其解。再令D=29，求其解。这里都假定已知其解都
+10000以内。 
+public class Ex7_24  
+
+public static void main(String[] args)  
+{ 
+ Solution( 29 ); 
+ Solution( 92 ); 
+} 
+
+public static void Solution( int D ) 
+{ 
+ double x, y; 
+ for( y=1; ; y++ ){ 
+  x = Math.sqrt( 1 + D*y*y ); 
+  if( (int)x == x ){ 
+   System.out.println(  
+    (int)x + " ^2 - " + D +"*"+ (int)y + " ^2 = 1"); 
+   break; 
+  } 
+ } 
+} 
+
+
+
+．从键盘上输入10个整数，并放入一个一维数组中，然后将其前5个元素与后5个元素对
+即：第1个元素与第10个元素互换，第2个元素与第9个元素互换……第5个元素与第6个元素
+ 
+import java.io.*; 
+
+ 
+
+public static void main(String[] args)  
+{ 
+ int [] a = new int[ 10 ]; 
+ for( int i=0; i<a.length; i++ ) 
+ { 
+  System.out.print( "请输入第" + (i+1)  + "个数: " ); 
+  a[i] = readOneIntger(); 
+ } 
+
+ System.out.println( "交换前为:" ); 
+ print(a); 
+
+ for( int i=0; i<a.length/2; i++ ) 
+ { 
+  int t; 
+  t = a[ a.length - i  -1]; 
+  a[ a.length - i  - 1] = a[i]; 
+  a[i] = t; 
+ } 
+
+ System.out.println( "交换后为:" ); 
+ print(a); 
+
+} 
+
+static void print( int [] a) 
+{ 
+ for( int i=0; i<a.length; i++ ) 
+  System.out.print( a[i] + " " ); 
+ System.out.println(); 
+} 
+
+static int readOneIntger( ) 
+{ 
+ int n = 0; 
+ try{ 
+  BufferedReader in = new BufferedReader( 
+   new InputStreamReader( System.in ) ); 
+  String s = in.readLine(); 
+  n = Integer.parseInt( s ); 
+ } 
+ catch(IOException e){} 
+ return n; 
+} 
+
+
+
+
+
+．有一个n*m的矩阵，编写程序，找出其中最大的那个元素所在的行和列，并输出其值
+class  Ex7_26 
+
+public static void main(String[] args)  
+{ 
+ int n = 5; 
+ int m = 6; 
+ int [][] a = new int[n][m]; 
+ for( int i=0; i<n; i++ ) 
+  for( int j=0; j<m; j++ ) 
+   a[i][j] = rnd(100); 
+
+ for( int i=0; i<n; i++ ) 
+ { 
+  for( int j=0; j<m; j++ ) 
+   System.out.print("\t" + a[i][j] ); 
+  System.out.println("\n"); 
+ } 
+
+
+ int max=a[0][0]; 
+ int p = 0; 
+ int q = 0; 
+ for( int i=0; i<n; i++ ) 
+ { 
+  for( int j=0; j<m; j++ ) 
+  { 
+   if( max < a[i][j] ) 
+   { 
+    max = a[i][j]; 
+    p=i; 
+    q=j; 
+   } 
+  } 
+ } 
+
+ System.out.println("第"+(p+1)+"行"+(q+1)+"列的值最大："+max); 
+} 
+ 
+public static int rnd( int max ) 
+{ 
+ return (int)(Math.random() * max ) + 1; 
+} 
+
+
+8章  Java的多线程 
+．程序中怎样创建线程？ 
+创建线程对象有两种方法，一是通过继承Thread类，一是向Thread类传递一个Runnable
+ 
+
+．程序中怎样控制线程？ 
+start()方法。 
+
+ 
+Thread对象的setPriority( int priority)方法。 
+
+．多线程之间怎样进行同步？ 
+synchronized，使用对象的wait()、notify()方法来实现线程间的同
+ 
+
+．编写一个程序，用一个线程显示时间，一个线程用来计算（如判断一个大数是否是质数）,
+ 
+import java.math.BigInteger; 
+
+
+
+public static void main(String args[]) { 
+ new Ex8_4().test(); 
+} 
+
+
+MyTask mytask = new MyTask(); 
+Thread thread = new Thread(mytask); 
+thread.start(); 
+
+new Thread( new Clock() ).start(); 
+
+
+
+
+
+public void run() { 
+ for( int i=0; i<10; i++ ){ 
+  doOnce(); 
+  Thread.yield(); 
+ } 
+ finished = true; 
+} 
+public void doOnce() 
+{ 
+ Random rnd = new Random(); 
+ BigInteger prime =BigInteger.probablePrime(800,rnd); 
+ System.out.println("随机数是："+prime.toString());  
+ boolean bo=prime.isProbablePrime( 10000 ); //验证  
+ System.out.println(bo?"很可能是质数":"不是质数");  
+} 
+
+
+
+public void run() { 
+ System.out.println("Start"); 
+ while( ! finished ){ 
+  System.out.print( "\r" + new java.util.Date()); 
+  try{ Thread.sleep(1000); } catch( InterruptedException e ){} 
+  Thread.yield(); 
+ } 
+} 
+
+
+
+9章  流、文件及基于文本的应用
+
+．字节流与字符流有什么差别？ 
+
+byte）与字符（char）。 
+
+．节点流与处理流有什么差别？ 
+(Node Stream): 直接与特定的地方（如磁盘、内存、设备等）相连，可以从/向
+(节点)读写数据。如文件流FileReader。 
+(Processing Stream): 是对一个已存在的流的连接和封装，通过所封装的流的功能调
+/写功能。处理流又称为过滤流。如缓冲处理流BufferedReader。 
+
+．输入流与输出流各有什么方法？ 
+InputStream类最重要的方法是读数据的read()方法。read()方法功能是逐字节地
+skip(long n)、reset()、available()、close()方法等。 
+OutputStream类的重要方法是write()，它的功能是将字节写入流中。另外，它还有
+及close()方法。 
+
+．怎样进行文件及目录的管理？ 
+Java支持文件管理和目录管理，它们都是由专门的java.io.File类来实现。每个File类的
+    关信息，如名称、长
+    理操作，如创建、
+ 
+
+．编写一个程序，从命令上行接收两个实数，计算其乘积。 
+import java.io.*; 
+ 
+
+public static void main(String[] args)  
+{ 
+ String s = ""; 
+ double c = 0; 
+ double d = 0; 
+ try{ 
+  BufferedReader in = new BufferedReader( 
+   new InputStreamReader( System.in ) ); 
+  System.out.print("请输入一个数: "); 
+  s = in.readLine(); 
+  c = Double.parseDouble( s ); 
+  System.out.print("请输入另一个数: "); 
+  s = in.readLine(); 
+  d = Double.parseDouble( s ); 
+  System.out.println("这两个数的积为: " + (c * d) ); 
+ }catch(IOException e){} 
+} 
+
+
+
+．编写一个程序，从命令行上接收两个文件名，比较两个文件的长度及内容。 
+import java.io.*; 
+ 
+
+public static void main(String[] args)  
+{ 
+ try{ 
+  BufferedReader in = new BufferedReader( 
+   new InputStreamReader( System.in ) ); 
+  System.out.print("请输入一个文件名: "); 
+  String name1 = in.readLine(); 
+  System.out.print("请输入另一个文件名: "); 
+  String name2 = in.readLine(); 
+
+  File file1 = new File( name1 ); 
+  File file2 = new File( name2 ); 
+
+  long len1 = file1.length(); 
+  long len2 = file2.length(); 
+
+  if( len1 != len2 ){ 
+   System.out.println( "这两个文件的长度不一样"); 
+   return; 
+  } 
+
+  String text1 = readFileToEnd( file1 ); 
+  String text2 = readFileToEnd( file2 ); 
+
+  System.out.println( text1 ); 
+  System.out.println( text2 ); 
+
+  if( text1.equals(text2) ){ 
+   System.out.println( "这两个文件的内容相同"); 
+  }else{ 
+   System.out.println( "这两个文件的内容不一样"); 
+  } 
+
+ }catch(IOException e){ 
+  e.printStackTrace(); 
+ } 
+} 
+
+public static String readFileToEnd( File file ){ 
+ StringBuffer text = new StringBuffer(); 
+ try { 
+  BufferedReader in = new BufferedReader( 
+   new FileReader(file)); 
+  String s = in.readLine(); 
+  while ( s != null ) { 
+   text.append( s + "\n" ); 
+   s = in.readLine(); 
+  } 
+  in.close(); 
+ } catch (IOException e2) { 
+  e2.printStackTrace(); 
+ } 
+ return text.toString(); 
+} 
+
+
+
+
+．编写一个程序，能将一个Java源程序中的空行及注释去掉。 
+import java.io.*; 
+
+public static void main (String[] args) { 
+ String infname = "CopyFileAddLineNumber.java"; 
+ String outfname = "CopyFileAddLineNumber.txt"; 
+ if( args.length >= 1 ) infname = args[0]; 
+ if( args.length >= 2 ) outfname = args[1]; 
+
+ try { 
+  File fin = new File(infname); 
+  File fout = new File(outfname); 
+
+  BufferedReader in = new BufferedReader(new FileReader(fin)); 
+  PrintWriter out  = new PrintWriter(new FileWriter(fout)); 
+
+  int cnt = 0; // 行号 
+  String s = in.readLine(); 
+  while ( s != null ) { 
+   cnt ++;  
+   s = deleteComments(s);   //去掉以//开始的注释 
+   if( s.length() != 0 ){  
+    out.println( s );   //写出非空行 
+   }    
+   s = in.readLine();    //读入 
+  }    
+  in.close();    // 关闭缓冲读入流及文件读入流的连接. 
+  out.close(); 
+ } catch (FileNotFoundException e1) { 
+  System.err.println("File not found!" ); 
+ } catch (IOException e2) { 
+  e2.printStackTrace(); 
+ } 
+} 
+
+static String deleteComments( String s ) //去掉以//开始的注释 
+{ 
+ if( s==null ) return s; 
+ int pos = s.indexOf( "//" ); 
+ if( pos<0 ) return s; 
+ return s.substring( 0, pos ); 
+} 
+
+10章  图形用户界面
+
+．试列举出图形用户界面中你使用过的组件。 
+Frame）、对话框（Dialog）、面板（Panel）、及滚动面
+（ScrollPane）等。常用的非容器组件，如按钮（Button），标签（Label），文本类组件（TextField
+TextArea），复选按钮(Checkbox)，单选按钮组(CheckboxGroup)，Choice(下拉列表)，List(列表)，
+(Scrollbar),画布(Canvas)等。 
+
+．Java中常用的布局管理各有什么特点？ 
+5种，即FlowLayout，BorderLayout，CardLayout，GridLayout和
+，它们的特点如下： 
+是容器Panel和它的子类Applet缺省使用的布局管理器，它将将其中的组件按照
+  的先后顺序从左向右排列，一行排满之后就下转到下一行继续。 
+是容器Frame和Dialog缺省使用的布局管理器，它把容器内的空间简单地划分
+ 
+的容器表面上可以容纳多个组件，但是实际上同一时刻容器只能从这些组件中
+―扑克牌‖每次只能显示最上面的一张一样，这个被显示的组件将占
+ 
+是使用较多的布局管理器，其基本布局策略是把容器的空间划分成若干    行
+ 
+GridBagLayout中，可以为每个组件指定其包含的网格个数，可以保留组件原来的大小，
+
+ 
+
+．简述Java的事件处理机制。 
+Java中通过实现事件监听器（Eventistener）来实现对事件的处理。事件监听器是一
+ java.awt.AWTEventListener的子类。接口中含有相关的方法，每个
+ 
+
+ 
+
+．什么是事件源?什么是监听者? 
+
+ 
+
+．列举java．awt．event包中定义的事件类，并写出它们的继承关系。 
+java.awt.event包中有一系列的事件类，如KeyEvent及MouseEvent等。这些事件类都
+AWTEvent类派生而来的。事件类之间的继承关系如下图所示。 
+
+
+
+．列举GUI的各种标准组件和它们之间的层次继承关系。 
+Component）分为容器（Container）类和非容器类组件两大类。容器本身也是组
+
+Button），标签（Label）,文本类组件TextComponent等等。 
+
+Window，Window的重要子类是Frame和Dialog。非顶层容器，不是独立的窗口，它们必须
+Panel及ScrollPane等， Panel的重要子类是Applet。其中，Panel
+Applet的容器都是无边框的；ScrollPanel一组是可以自动处理滚动操作的容器；Window，
+，Dialog和FileDialog是一组大都含有边框，并可以移动、放大、缩小、关闭的功能较强的
+ 
+组件的分类如下图所示： 
+,DialogFrameWindowContainerent,......TextCompon Label, Button,ScrollPanePanelComponent
+
+ 
+
+
+．Component类有何特殊之处?其中定义了哪些常用方法? 
+Component类是所有组件和容器的抽象父类，其中定义了一些每个容器和组件都可能
+ 
+void add(PopupMenu popup)：在组件上加入一个弹出菜单，当用户用鼠标右键单
+ 
+：获得组件的背景色。 
+：获得组件使用的字体。 
+：获得组件的前景色。 
+：获得在组件上绘图时需要使用的Graphics对象。 
+，int y，int width，int height)：以指定的坐标点(x，y)为左上角，
+(width)、指定高度(height)的区域。 
+：设置组件的背景色。 
+：设置组件的使能状态。参数b为真则组件使能，否则组
+ 
+：设置组件使用的字体。 
+，int height)：设置组件的大小。 
+：设置组件是否可见的属性。参数b为真时，组件在包括
+ 
+：设置组件的前景色。 
+：使组件获得注意的焦点。 
+
+
+．将各种常用组件的创建语句、常用方法、可能引发的事件、需要注册的监听者和监听者
+ 
+ 
+  件 Act Adj Cmp Cnt Foc Itm Key Mou MM Txt Win 
+Y  Y  Y  Y Y Y   
+  Y  Y  Y Y Y   
+  Y  Y Y Y Y Y   
+     Y      
+  Y  Y Y Y Y Y   
+  Y  Y  Y Y Y   
+  Y Y Y  Y Y Y   
+  Y Y Y  Y Y Y  Y 
+  Y Y Y  Y Y Y  Y 
+  Y  Y  Y Y Y   
+Y  Y  Y Y Y Y Y   
+Y           
+  Y Y Y  Y Y Y   
+ Y Y  Y  Y Y Y   
+  Y Y Y  Y Y Y   
+  Y  Y  Y Y Y Y  
+Y  Y  Y  Y Y Y Y  
+  Y Y Y  Y Y Y  Y 
+ 
+： Action 行动事件 
+： Adjustment调整 
+： Component组件事件 
+： Container容器事件 
+：   Focus  焦点事件 
+： Item   条目事件 
+： Key键盘事件 
+： Mouse  鼠标事件 
+： Mouse Motion鼠标移动事件 
+： Text  文本事件 
+：  Window 窗口事件 
+
+．编写Applet包括一个标签、一个文本框和一个按钮，当用户单击按钮时，程序把文本框
+ 
+ 
+
+．编写Applet程序，画出一条螺旋线。 
+import java.awt.*; 
+
+
+
+
+
+public void paint(Graphics g){ 
+ double w = getSize().width/2; 
+ double h = getSize().height/2; 
+ g.setColor( Color.blue ); 
+ for( double th =0; th<h; th+=0.003){ 
+  double r = th; 
+  double x = r * Math.cos( th ) + w; 
+  double y = r * Math.sin( th ) + h; 
+  g.drawLine( (int)x, (int)y, (int)x, (int)y); 
+ } 
+} 
+
+
+
+．编写Applet程序，用paint()方法显示一行字符串，Applet包含两个按钮―放大‖和―缩小‖，
+―放大‖时显示的字符串字体放大一号，单击―缩小‖时显示的字符串字体缩小一号。 
+import java.applet.*; 
+
+
+
+ Ex10_11 extends Applet 
+
+
+Button btn1 = new Button("放大"); 
+Button btn2 = new Button("缩小"); 
+
+public void init() 
+{ 
+ setLayout( new FlowLayout() ); 
+ add( btn1 ); 
+ add( btn2 ); 
+ btn1.addActionListener( new BtnActionAdapter() ); 
+ btn2.addActionListener( new BtnActionAdapter() ); 
+} 
+
+private int fontSize = 12; 
+
+public void paint(Graphics g){ 
+ double w = getSize().width/2; 
+ double h = getSize().height/2; 
+ g.setColor( Color.blue ); 
+ g.setFont( new Font( "宋体", Font.PLAIN, fontSize ) ); 
+ g.drawString( "文字的大小" + fontSize , 10, 15 ); 
+} 
+
+class BtnActionAdapter implements ActionListener 
+{ 
+ public void actionPerformed( ActionEvent e ) 
+ { 
+  if( e.getSource() == btn1 ) fontSize += 2; 
+  if( e.getSource() == btn2 ) fontSize -= 2; 
+  if( fontSize <= 5 ) fontSize = 5; 
+  Ex10_11.this.repaint(); 
+ } 
+} 
+
+
+
+
+．编写Applet程序，包含三个标签，其背景分别为红、黄、蓝三色。 
+import java.applet.*; 
+
+
+
+ Ex10_12 extends Applet 
+
+Label lb1 = new Label("红"); 
+Label lb2 = new Label("黄"); 
+Label lb3 = new Label("蓝"); 
+
+public void init() 
+{ 
+ setLayout( new FlowLayout() ); 
+ add( lb1 ); 
+ add( lb2 ); 
+ add( lb3 ); 
+ lb1.setBackground( Color.red ); 
+ lb2.setBackground( Color.yellow ); 
+ lb3.setBackground( Color.blue ); 
+} 
+
+
+
+．使用Checkbox标志按钮的背景色，使用CheckboxGroup标志三种字体风格，使用Choice
+List选择字体名称，由用户确定按钮的背景色和前景字符的显示效果。 
+import java.applet.*; 
+
+
+
+ Ex10_13 extends Applet implements ActionListener 
+
+Checkbox chkBack = new Checkbox("背景为黄色"); 
+
+CheckboxGroup cbgStyle = new CheckboxGroup(); 
+
+Choice chcSize = new Choice(); 
+
+List lstName = new List(4, false); 
+Button btnOk = new Button("确定"); 
+
+public void init() 
+{ 
+ add( chkBack ); 
+
+ add(new Checkbox("常规", cbgStyle, false)); 
+ add(new Checkbox("粗体", cbgStyle, true)); 
+ add(new Checkbox("斜体", cbgStyle, false)); 
+
+ chcSize.add( "9" ); 
+ chcSize.add( "11" ); 
+ chcSize.add( "15" ); 
+ add( chcSize ); 
+
+ lstName.add( "宋体"); 
+ lstName.add( "楷体"); 
+ lstName.add( "黑体"); 
+ add( lstName ); 
+
+ add( btnOk); 
+
+ btnOk.addActionListener( this ); 
+}   
+  
+public void actionPerformed(ActionEvent e) 
+{ 
+ boolean back = chkBack.getState(); 
+
+ int fontStyle = Font.PLAIN; 
+ Checkbox chkStyle = cbgStyle.getSelectedCheckbox(); 
+ if( chkStyle.getLabel() == "粗体" ) 
+  fontStyle = Font.BOLD; 
+ if( chkStyle.getLabel() == "斜体" ) 
+  fontStyle = Font.ITALIC; 
+
+ int fontSize = Integer.parseInt( chcSize.getSelectedItem() ); 
+  
+ String fontName = lstName.getSelectedItem(); 
+ if( fontName == null ) fontName = "宋体"; 
+
+ Font font = new Font( fontName, fontStyle, fontSize ); 
+
+ if( back ) btnOk.setBackground( Color.yellow ); 
+
+ btnOk.setFont( font ); 
+
+}  
+
+
+
+．使用滚动条：编写一个Applet包含一个滚动条，在Applet中绘制一个圆，用滚动条滑块
+ 
+import java.applet.*; 
+
+
+
+ Ex10_14 extends Applet 
+
+
+Scrollbar scrl = new Scrollbar(Scrollbar.HORIZONTAL); 
+
+public void init() 
+{ 
+ //scrl.setBounds( 10,10, getSize().width-20, 10 ); 
+ scrl.setMaximum( getSize().width ); 
+ scrl.setValue( rad * 2); 
+ scrl.addAdjustmentListener( new MyListener() ); 
+ setLayout( new BorderLayout() ); 
+ add( scrl, BorderLayout.NORTH ); 
+} 
+
+private int rad = 12; 
+
+public void paint(Graphics g){ 
+ int w = getSize().width/2; 
+ int h = getSize().height/2; 
+ g.setColor( Color.blue ); 
+ g.drawOval( w-rad, h-rad, rad*2, rad*2 ); 
+} 
+
+class MyListener implements AdjustmentListener 
+{ 
+ public void adjustmentValueChanged( AdjustmentEvent e ) 
+ { 
+  rad = scrl.getValue()/2; 
+  if( rad <= 5 ) rad = 5; 
+  Ex10_14.this.repaint(); 
+ } 
+} 
+
+
+
+
+．编写一个Applet响应鼠标事件，用户可以通过拖动鼠标在Applet中画出矩形，并在状态
+使用一个Vector对象保存用户所画过的每个矩形并显示、响应键盘事件，
+q时清除屏幕上所有的矩形。 
+import java.applet.*; 
+
+
+
+
+ Ex10_15 extends Applet 
+
+public void init() 
+{ 
+ this.addMouseListener( new MyMouseListener() ); 
+ this.addKeyListener( new MyKeyListener() ); 
+} 
+
+private Vector rects = new Vector(); 
+private Point down = null; 
+
+public void paint(Graphics g){ 
+ g.setColor( Color.blue ); 
+ for( int i=rects.size()-1; i>=0; i-- ){ 
+  Rectangle r = (Rectangle)rects.get(i); 
+  g.drawRect( (int)r.getX(), (int)r.getY(),  
+   (int)r.getWidth(), (int)r.getHeight() ); 
+ } 
+ g.drawString( "有"+rects.size()+"个矩形", 10,15 ); 
+ System.out.println("R"); 
+} 
+
+class MyMouseListener extends MouseAdapter 
+{ 
+ public void mousePressed(MouseEvent e) 
+ { 
+  down = e.getPoint(); 
+ } 
+ public void mouseReleased(MouseEvent e) 
+ { 
+  Point up = e.getPoint(); 
+  if( down==null || up.equals(down) ){ 
+   down = null; 
+   return; 
+  }else{ 
+   rects.add( new Rectangle(  
+    (int)down.getX(), (int)down.getY(), 
+    (int)(up.getX()-down.getX()),  
+    (int)(up.getY()-down.getY()) 
+   )); 
+   down = null; 
+   Ex10_15.this.repaint(); 
+  } 
+  System.out.println("M"); 
+ } 
+} 
+
+class MyKeyListener extends KeyAdapter 
+{ 
+ public void keyTyped(KeyEvent e) 
+ { 
+  if( e.getKeyChar() == 'q' ){ 
+   rects = new Vector(); 
+   Ex10_15.this.repaint(); 
+  } 
+  System.out.println("K"); 
+ } 
+} 
+
+．编写Applet程序实现一个计算器，包括十个数字(0～9)按钮和四个运算符 (加、减、乘、
+)按钮，以及等号和清空两个辅助按钮，还有一个显示输入输出的文本框。试用BorderLayout
+GridLayout实现。import java.applet.*; 
+
+
+
+
+ Ex10_16 extends Applet implements ActionListener 
+
+double  d0,d1,d2,result; 
+boolean  flag=true; 
+String  s,oper; 
+TextField  tf1; 
+Panel   p=new Panel(); 
+
+public void init() 
+{ 
+     
+ int i; 
+ result=0; 
+ s=new String(); 
+ oper=new String("+"); 
+ tf1=new TextField("",15); 
+ Button[] b=new Button[21]; 
+ for(i=1;i<21;i++) 
+ { 
+  b[i]=new Button(); 
+  b[i].setFont(new Font("仿宋",0,16)); 
+ } 
+ b[1].setLabel("退格"); 
+ b[2].setLabel("CE"); 
+ b[3].setLabel("C"); 
+ b[4].setLabel("/"); 
+ b[5].setLabel("7"); 
+ b[6].setLabel("8"); 
+ b[7].setLabel("9"); 
+ b[8].setLabel("*"); 
+ b[9].setLabel("4"); 
+ b[10].setLabel("5"); 
+ b[11].setLabel("6"); 
+ b[12].setLabel("-"); 
+ b[13].setLabel("1"); 
+ b[14].setLabel("2"); 
+ b[15].setLabel("3"); 
+ b[16].setLabel("+"); 
+ b[17].setLabel("0"); 
+ b[18].setLabel("+/-"); 
+ b[19].setLabel("."); 
+ b[20].setLabel("="); 
+ p.setLayout(new GridLayout(5,4)); 
+ p.setBackground(new Color(80,30,100)); 
+ for(i=1;i<21;i++) 
+ { 
+  p.add(b[i]); 
+  b[i].addActionListener(this); 
+  b[i].setBackground(new Color(20,130,180)); 
+  b[i].setForeground(Color.yellow); 
+ } 
+ for(i=1;i<4;i++)   
+ { 
+  b[i].setBackground(new Color(120,180,170)); 
+  b[i].setForeground(Color.blue); 
+ } 
+ for(i=1;i<=4;i++)   
+ { 
+  b[i*4].setBackground(new Color(120,180,170)); 
+  b[i*4].setForeground(Color.red); 
+ } 
+ b[20].setBackground(Color.red); 
+ setLayout(new BorderLayout()); 
+ add("North",tf1); 
+ add("Center",p); 
+}   
+        
+  
+public void actionPerformed(ActionEvent e) 
+{ 
+ String i1=tf1.getText(); 
+ s=e.getActionCommand(); 
+ if(s=="0"| s=="1"|s=="2"|s=="3"|s=="4"|s=="5"|s=="6"|s=="7"|s=="8"|s=="9"|s==".") 
+ { 
+  if(flag) tf1.setText(i1+s);  
+   else 
+   { 
+    tf1.setText(s); 
+    flag=true; 
+   } 
+ } 
+ else if(s=="+"|s=="-"|s=="*"|s=="/")            
+ { 
+  result=Double.parseDouble(i1); 
+  flag=false; 
+  oper=s; 
+ } 
+ else if(s=="=") 
+ { 
+  d0=Double.parseDouble(i1); 
+  if(oper=="+")  result+=d0; 
+  if(oper=="-")  result-=d0; 
+  if(oper=="*")  result*=d0; 
+  if(oper=="/")  result/=d0; 
+  tf1.setText(Double.toString(result)); 
+  flag=false; 
+ }  
+ else if(s=="CE") 
+ { 
+  tf1.setText(""); 
+  flag=false; 
+ } 
+ else if(s=="C") 
+ { 
+  result=0; 
+  tf1.setText(""); 
+  flag=false; 
+ } 
+ else if(s=="退格") 
+ { 
+  String ss=tf1.getText(); 
+  int i=ss.length(); 
+  ss=ss.substring(0,i-1); 
+  tf1.setText(ss);           
+ } 
+ else if(s=="+/-") 
+ { 
+  d2=-1*Double.parseDouble(tf1.getText()); 
+  tf1.setText(Double.toString(d2)); 
+ } 
+}  
+ 
+ 
+ 
+
+．Panel与Applet有何关系?Panel在Java程序里通常起到什么作用? 
+Panel类是Applet类的父类。Panel在Java程序里通常用作容器，用于将其他对象进行布
+ 
+
+．为什么说Frame是非常重要的容器?为什么使用Frame的程序通常要实现  
+关闭Frame有哪些方法? 
+Frame是可以独立存在的顶层容器，相当于我们在Windows中看见的独立窗口，所以它
+Frame类自己没有自动关闭的功能，所以通常要实现WindowListener来处理
+ 
+
+WINDOWS_CLOSING事件做出响应，关闭窗口；第三个方法是使用菜单命令。前
+WindowListener接口所需的代码较多，无论使用
+Frame的dispose()方法。 
+
+．练习使用列表框及组合框。 
+（可参见第13题）。 
+
+．Swing组件与AWT件有何区别。 
+Swing是第二代GUI开发工具集，与AWT是第一代GUI开发工具集。与AWT相比，Swing
+Swing提供了更完整的组件，增加了许多功能。此外，Swing引入了许多
+如：所有的组件都很小巧的（轻量级的），支持双缓存，支持拖放，支持文本、
+(Tooltip)，新的布局管理，更多的组件等等。 
+
+．绘出以下函数的曲线： 
+
+
+import java.awt.*; 
+
+
+
+
+
+public void paint(Graphics g){ 
+ double w = getSize().width; 
+ double h = getSize().height; 
+ g.setColor( Color.red ); 
+ for( double x =0; x<w/10; x+=0.003){ 
+  double y = 5*Math.sin( x ) + Math.cos(3*x); 
+  double xx = x * 10; 
+  double yy = y * h/22 + h/4;  
+  g.drawLine( (int)xx, (int)yy, (int)xx, (int)yy); 
+ } 
+ g.setColor( Color.blue ); 
+ for( double x =0; x<w/10; x+=0.003){ 
+  double y = Math.sin( x ) + Math.cos(6*x)/10; 
+  double xx = x * 10 ; 
+  double yy = y * h/5 + h*3/4;  
+  g.drawLine( (int)xx, (int)yy, (int)xx, (int)yy); 
+ } 
+} 
+
+
+
+．绘出以下函数的曲线： 
+θ) 
+θ) 
+import java.awt.*; 
+
+
+
+
+
+public void paint(Graphics g){ 
+ double w = getSize().width/2; 
+ double h = getSize().height/2; 
+ g.setColor( Color.red ); 
+ for( double th =0; th<10; th+=0.003){ 
+  double r = Math.cos( 2 * th ) * h; 
+  double x = r * Math.cos( th ) + w/2; 
+  double y = r * Math.sin( th ) + h; 
+  g.drawLine( (int)x, (int)y, (int)x, (int)y); 
+ } 
+ g.setColor( Color.blue ); 
+ for( double th =0; th<10; th+=0.003){ 
+  double r = Math.cos( 3 * th ) * h; 
+  double x = r * Math.cos( th ) + w*3/2; 
+  double y = r * Math.sin( th ) + h; 
+  g.drawLine( (int)x, (int)y, (int)x, (int)y); 
+ } 
+} 
+
+
+
+．根据本章的所学习的内容用JavaApplication编写一个模拟的文本编辑器。给文本编辑器
+ 
+import java.awt.*; 
+
+
+
+
+
+
+
+File file = null; 
+Color color = Color.black; 
+ 
+TextEditorFrame(){ 
+ initTextPane(); 
+ initMenu(); 
+ initAboutDialog(); 
+ initToolBar(); 
+} 
+
+void initTextPane(){ //将文本框放入有滚动对象，并加入到Frame中 
+ getContentPane().add( new JScrollPane(text) ); 
+} 
+
+JTextPane text = new JTextPane();  //文本框 
+JFileChooser filechooser = new JFileChooser(); //文件选择对话框 
+JColorChooser colorchooser = new JColorChooser(); //颜色选择对话框 
+JFontChooser fontchooser = new JFontChooser(); //颜色选择对话框 
+JDialog about = new JDialog(this); //关于对话框 
+JMenuBar menubar = new JMenuBar(); //菜单 
+
+JMenu [] menus = new JMenu[] { 
+ new JMenu("File"), 
+ new JMenu("Edit"), 
+ new JMenu("Help") 
+}; 
+JMenuItem menuitems [][] = new JMenuItem[][]{{ 
+ new JMenuItem("New"),  
+ new JMenuItem("Open..."), 
+ new JMenuItem("Save..."),  
+ new JMenuItem("Exit")},{ 
+ new JMenuItem("Copy"), 
+ new JMenuItem("Cut"), 
+ new JMenuItem("Paste"), 
+ new JMenuItem("Color..."), 
+ new JMenuItem("Font...")},{ 
+ new JMenuItem("About")} 
+}; 
+
+void initMenu(){  //初始化菜单 
+ for( int i=0; i<menus.length; i++ ){ 
+  menubar.add( menus[i] ); 
+  for( int j=0; j<menuitems[i].length; j++ ){ 
+   menus[i].add( menuitems[i][j] ); 
+   menuitems[i][j].addActionListener( action ); 
+  } 
+ } 
+ this.setJMenuBar( menubar ); 
+} 
+
+ActionListener action = new ActionListener(){ //菜单事件处理 
+ public void actionPerformed( ActionEvent e ){ 
+  JMenuItem mi = (JMenuItem)e.getSource(); 
+  String id = mi.getText(); 
+  if( id.equals("New" )){ 
+   text.setText(""); 
+   file = null; 
+  }else if( id.equals("Open...")){ 
+   if( file != null ) filechooser.setSelectedFile( file ); 
+   int returnVal = filechooser.showOpenDialog( 
+    TextEditorFrame.this); 
+   if(returnVal == JFileChooser.APPROVE_OPTION) { 
+    file = filechooser.getSelectedFile(); 
+    openFile(); 
+   } 
+  }else if( id.equals("Save...")){ 
+   if( file != null ) filechooser.setSelectedFile( file ); 
+   int returnVal = filechooser.showSaveDialog( 
+    TextEditorFrame.this); 
+   if(returnVal == JFileChooser.APPROVE_OPTION) { 
+    file = filechooser.getSelectedFile(); 
+    saveFile(); 
+   } 
+  }else if( id.equals("Exit")){ 
+   System.exit(0); 
+  }else if( id.equals("Cut")){ 
+   text.cut(); 
+  }else if( id.equals("Copy")){ 
+   text.copy(); 
+  }else if( id.equals("Paste")){ 
+   text.paste(); 
+  }else if( id.equals("Color...")){ 
+   color = JColorChooser.showDialog(  
+    TextEditorFrame.this, "", color ); 
+   text.setForeground(color); 
+  }else if( id.equals("Font...")){ 
+   fontchooser.setVisible( true ); 
+   Font font = fontchooser.getFont();    
+   text.setFont(font); 
+  }else if( id.equals("About")){ 
+   about.setSize(100,50); 
+   about.setVisible(true); 
+  } 
+ } 
+   }; 
+
+void saveFile(){ //保存文件，将字符写入文件 
+ try{ 
+  FileWriter fw = new FileWriter( file ); 
+  fw.write( text.getText() ); 
+  fw.close(); 
+ }catch(Exception e ){ e.printStackTrace(); } 
+} 
+void openFile(){ //读入文件，并将字符置入文本框中 
+ try{ 
+  FileReader fr = new FileReader( file ); 
+  int len = (int) file.length(); 
+  char [] buffer = new char[len]; 
+  fr.read( buffer, 0, len ); 
+  fr.close(); 
+  text.setText( new String( buffer ) ); 
+ }catch(Exception e ){ e.printStackTrace(); } 
